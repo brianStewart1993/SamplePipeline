@@ -1,0 +1,8 @@
+#user-list{
+  width: 1000px;
+  margin: 100px auto 0 auto;
+}
+
+#user-list  .user-header th{
+  text-align: left;
+}
