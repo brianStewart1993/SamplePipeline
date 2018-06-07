@@ -77,7 +77,7 @@ public class SpringEndtoEndApplicationTests {
 	    
 	    @Test
 	    public void readSingleUser() throws Exception {
-	        mockMvc.perform(get("/users/1"))
+	        mockMvc.perform(get("/users/48"))
 	                .andExpect(status().isOk())
 	                .andExpect(content().contentType(contentType));
 	        
@@ -93,7 +93,7 @@ public class SpringEndtoEndApplicationTests {
 
 	    @Test
 	    public void Register() throws Exception {
-	        User user = new User(44, "testingsss", "testdatacus");
+	        User user = new User(44, "testingsssagain", "testdatacus");
 	        String bookmarkJson = json(user);
 
 	        this.mockMvc.perform(post("/users/addCustom")
@@ -105,7 +105,7 @@ public class SpringEndtoEndApplicationTests {
 	    @Test
 	    public void Login() throws Exception {
 
-	        this.mockMvc.perform(get("/users/login/?username=kingking&password=kongking"))
+	        this.mockMvc.perform(get("/users/login/?username=Rogerlee&password=password"))
 	        .andExpect(status().isOk())
             .andExpect(content().contentType("text/plain;charset=UTF-8"));
 	    }
@@ -113,17 +113,17 @@ public class SpringEndtoEndApplicationTests {
 	    @Test
 	    public void deleteUser() throws Exception {
 
-	        this.mockMvc.perform(delete("/users/delete/13"))
+	        this.mockMvc.perform(delete("/users/delete/56"))
 	        .andExpect(status().isOk())
             .andExpect(content().contentType("text/plain;charset=UTF-8"));
 	    }
 	    
 	    @Test
 	    public void updateUser() throws Exception {
-	        User user = new User(1, "Brian", "testdataa");
+	        User user = new User(49, "Briantest", "testdataa");
 	        String bookmarkJson = json(user);
 
-	        this.mockMvc.perform(put("/users/update/1")
+	        this.mockMvc.perform(put("/users/update/49")
 	                .contentType(contentType)
 	                .content(bookmarkJson))
 	                .andExpect(status().isOk());
