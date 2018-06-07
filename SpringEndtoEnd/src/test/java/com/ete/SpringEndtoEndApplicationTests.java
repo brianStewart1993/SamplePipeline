@@ -93,7 +93,7 @@ public class SpringEndtoEndApplicationTests {
 
 	    @Test
 	    public void Register() throws Exception {
-	        User user = new User(44, "testingsagain", "testdatacus");
+	        User user = new User(44, "testagain", "testdatacus");
 	        String bookmarkJson = json(user);
 
 	        this.mockMvc.perform(post("/users/addCustom")
@@ -113,7 +113,7 @@ public class SpringEndtoEndApplicationTests {
 	    @Test
 	    public void deleteUser() throws Exception {
 
-	        this.mockMvc.perform(delete("/users/delete/57"))
+	        this.mockMvc.perform(delete("/users/delete/59"))
 	        .andExpect(status().isOk())
             .andExpect(content().contentType("text/plain;charset=UTF-8"));
 	    }
