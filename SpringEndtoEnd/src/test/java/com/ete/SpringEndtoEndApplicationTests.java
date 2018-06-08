@@ -93,11 +93,7 @@ public class SpringEndtoEndApplicationTests {
 
 	    @Test
 	    public void Register() throws Exception {
-<<<<<<< HEAD
 	        User user = new User(44, "testingggsssa", "testdatacus");
-=======
-	        User user = new User(44, "testagain", "testdatacus");
->>>>>>> 5260cb15cacf9a97358ef8df7b21757d7b687274
 	        String bookmarkJson = json(user);
 
 	        this.mockMvc.perform(post("/users/addCustom")
@@ -109,35 +105,23 @@ public class SpringEndtoEndApplicationTests {
 	    @Test
 	    public void Login() throws Exception {
 
-<<<<<<< HEAD
 	        this.mockMvc.perform(get("/users/login/?username=Briantest&password=testdataa"))
-=======
-	        this.mockMvc.perform(get("/users/login/?username=Rogerlee&password=password"))
->>>>>>> 5260cb15cacf9a97358ef8df7b21757d7b687274
+	
 	        .andExpect(status().isOk())
             .andExpect(content().contentType("text/plain;charset=UTF-8"));
 	    }
 	    
 	    @Test
 	    public void deleteUser() throws Exception {
-
-<<<<<<< HEAD
 	        this.mockMvc.perform(delete("/users/delete/60"))
-=======
-	        this.mockMvc.perform(delete("/users/delete/59"))
->>>>>>> 5260cb15cacf9a97358ef8df7b21757d7b687274
 	        .andExpect(status().isOk())
             .andExpect(content().contentType("text/plain;charset=UTF-8"));
 	    }
 	    
 	    @Test
 	    public void updateUser() throws Exception {
-<<<<<<< HEAD
-	        User user = new User(48, "Rogerlee", "testdataa");
-=======
-	        User user = new User(49, "Briantest", "testdataa");
->>>>>>> 5260cb15cacf9a97358ef8df7b21757d7b687274
-	        String bookmarkJson = json(user);
+	        User user = new User(48, "Tesssssstkkkk", "testdataa");
+       String bookmarkJson = json(user);
 
 	        this.mockMvc.perform(put("/users/update")
 	                .contentType(contentType)
