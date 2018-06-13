@@ -93,7 +93,7 @@ public class SpringEndtoEndApplicationTests {
 
 	    @Test
 	    public void Register() throws Exception {
-	        User user = new User(44, "testingggsssa", "testdatacus");
+	        User user = new User(44, "testingggsss", "testdatacus");
 	        String bookmarkJson = json(user);
 
 	        this.mockMvc.perform(post("/users/addCustom")
