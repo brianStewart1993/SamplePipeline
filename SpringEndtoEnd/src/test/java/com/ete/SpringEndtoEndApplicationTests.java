@@ -83,14 +83,30 @@ public class SpringEndtoEndApplicationTests {
 	                .andExpect(content().contentType(contentType));
 	        
 	    }
+
+	@Test
+	public void readSingleUserFailure() throws Exception {
+		mockMvc.perform(get("/users/1"))
+				.andExpect(status().isNotFound())
+				.andExpect(content().contentType("text/plain;charset=UTF-8"));
+
+	}
 	    
 	    @Test
 	    public void readSingleUserByUsername() throws Exception {
-	        mockMvc.perform(get("/users/GetByUsername/Brian"))
+	        mockMvc.perform(get("/users/GetByUsername/Briantest"))
 	                .andExpect(status().isOk())
 	                .andExpect(content().contentType("text/plain;charset=UTF-8"));
 	        
 	    }
+	    //Needs to be checked
+	@Test
+	public void readSingleUserByUsernameFailure() throws Exception {
+		mockMvc.perform(get("/users/GetByUsername/Brian1"))
+				.andExpect(status().isOk())
+				.andExpect(content().contentType("text/plain;charset=UTF-8"));
+
+	}
 
 	    @Test
 		@Transactional
@@ -103,15 +119,71 @@ public class SpringEndtoEndApplicationTests {
 	                .content(bookmarkJson))
 	                .andExpect(status().isCreated());
 	    }
-	    
-	    @Test
-	    public void Login() throws Exception {
 
-	        this.mockMvc.perform(get("/users/login/?username=Briantest&password=testdataa"))
-	
-	        .andExpect(status().isOk())
-            .andExpect(content().contentType("text/plain;charset=UTF-8"));
-	    }
+	@Test
+	@Transactional
+	public void RegisterAlreadyTaken() throws Exception {
+		User user = new User(44, "Briantest", "testdatacus");
+		String bookmarkJson = json(user);
+
+		this.mockMvc.perform(post("/users/addCustom")
+				.contentType(contentType)
+				.content(bookmarkJson))
+				.andExpect(status().isBadGateway());
+	}
+
+	@Test
+	@Transactional
+	public void RegisterNullFieldsOrTooManyOrTooFewFields() throws Exception {
+		User user = new User(44, "", "testdatacus");
+		String bookmarkJson = json(user);
+
+		this.mockMvc.perform(post("/users/addCustom")
+				.contentType(contentType)
+				.content(bookmarkJson))
+				.andExpect(status().isBadRequest());
+	}
+
+	@Test
+	@Transactional
+	public void RegisterDefaultRepo() throws Exception {
+		User user = new User(44, "testingonetwothree", "testdatacus");
+		String bookmarkJson = json(user);
+
+		this.mockMvc.perform(post("/users/add")
+				.contentType(contentType)
+				.content(bookmarkJson))
+				.andExpect(status().isOk());
+	}
+
+
+	@Test
+	public void Login() throws Exception {
+
+		this.mockMvc.perform(get("/users/login/?username=Briantest&password=testdataa"))
+
+				.andExpect(status().isOk())
+				.andExpect(content().contentType("text/plain;charset=UTF-8"));
+	}
+
+	@Test
+	public void LoginCharacter() throws Exception {
+
+		this.mockMvc.perform(get("/users/login/?username=&password="))
+
+				.andExpect(status().isBadGateway())
+				.andExpect(content().contentType("text/plain;charset=UTF-8"));
+	}
+
+	@Test
+	public void LoginWrongCredentials() throws Exception {
+
+		this.mockMvc.perform(get("/users/login/?username=Brianffffff&password=testdataa"))
+
+				.andExpect(status().isOk())
+				.andExpect(content().string("Username or Password Incorrect!"))
+				.andExpect(content().contentType("text/plain;charset=UTF-8"));
+	}
 	    
 	    @Test
 		@Transactional
@@ -121,19 +193,31 @@ public class SpringEndtoEndApplicationTests {
             .andExpect(content().contentType("text/plain;charset=UTF-8"));
 	    }
 	    
-	    @Test
-	    public void updateUser() throws Exception {
-	        User user = new User(48, "Tesssssstkkkk", "testdataa");
-       String bookmarkJson = json(user);
+	   @Test
+	   @Transactional
+	public void updateUser() throws Exception {
+		User user = new User(48, "Tesssssstkkkk", "testdataa");
+		String bookmarkJson = json(user);
 
-	        this.mockMvc.perform(put("/users/update")
-	                .contentType(contentType)
-	                .content(bookmarkJson))
-	                .andExpect(status().isOk());
-	    }
-	    
+		this.mockMvc.perform(put("/users/update")
+				.contentType(contentType)
+				.content(bookmarkJson))
+				.andExpect(status().isOk());
+	}
 
-	    @SuppressWarnings("unchecked")
+	@Test
+	@Transactional
+	public void updateUserNameAlreadyTaken() throws Exception {
+		User user = new User(48, "Briantest", "testdataa");
+		String bookmarkJson = json(user);
+
+		this.mockMvc.perform(put("/users/update")
+				.contentType(contentType)
+				.content(bookmarkJson))
+				.andExpect(status().isInternalServerError());
+	}
+
+	@SuppressWarnings("unchecked")
 		protected String json(Object o) throws IOException {
 	        MockHttpOutputMessage mockHttpOutputMessage = new MockHttpOutputMessage();
 	        this.mappingJackson2HttpMessageConverter.write(
