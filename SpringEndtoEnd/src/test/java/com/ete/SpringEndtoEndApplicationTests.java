@@ -12,6 +12,7 @@ import org.springframework.mock.http.MockHttpOutputMessage;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.io.IOException;
@@ -92,8 +93,9 @@ public class SpringEndtoEndApplicationTests {
 	    }
 
 	    @Test
+		@Transactional
 	    public void Register() throws Exception {
-	        User user = new User(44, "testingggsss", "testdatacus");
+	        User user = new User(44, "testingonetwo", "testdatacus");
 	        String bookmarkJson = json(user);
 
 	        this.mockMvc.perform(post("/users/addCustom")
@@ -112,8 +114,9 @@ public class SpringEndtoEndApplicationTests {
 	    }
 	    
 	    @Test
+		@Transactional
 	    public void deleteUser() throws Exception {
-	        this.mockMvc.perform(delete("/users/delete/60"))
+	        this.mockMvc.perform(delete("/users/delete/62"))
 	        .andExpect(status().isOk())
             .andExpect(content().contentType("text/plain;charset=UTF-8"));
 	    }
