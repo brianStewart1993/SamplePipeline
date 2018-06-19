@@ -3,6 +3,8 @@ package com.ete;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -46,6 +48,8 @@ public class UnitTests {
             Charset.forName("utf8"));
 
     private MockMvc mockMvc;
+    
+    private final Logger log = LoggerFactory.getLogger(UnitTests.class);
 
 
     @SuppressWarnings("rawtypes")
@@ -77,7 +81,7 @@ public class UnitTests {
 	    @Test
 	    public void readUsers() throws Exception {
 	    	List<User> users = new ArrayList<>();
-	    	
+	    	log.info("Executing unit test to get all users");
 	      users = userService.getAllUsers();
 	      assertNotNull(users);
 	        
@@ -86,7 +90,7 @@ public class UnitTests {
 	    @Test
 	    public void readSingleUser() throws Exception {
 	    	User user = new User();
-	    	
+	    	log.info("Executing unit test to get user with id: ", 48);
 		      user = userService.getUser(48);
 		      assertNotNull(user);
 		        
@@ -97,7 +101,7 @@ public class UnitTests {
 	       
 	    	
 	    	String user;
-	    	
+	    	log.info("Executing unit test to get user Briantest by username");
 		      user = userService.getUserByUsername("Briantest");
 		      assertEquals("[User [id=49, username=Briantest, password=testdataa]]", user);
 		        
@@ -108,7 +112,7 @@ public class UnitTests {
 	    public void Register() throws Exception {
 	        User user = new User(44, "testmatrix", "testdatacus");
 	        userService.Register(user.getUsername(), user.getPassword());
-	        
+	        log.info("Executing unit test to register user then executes a login attempt for that user");
 	      String result = userService.login(user.getUsername(), user.getPassword());
 	      assertThat(result).contains("testmatrix");
 	      assertThat(result).contains("testdatacus");
@@ -120,6 +124,7 @@ public class UnitTests {
 	public void Login() throws Exception {
 		
 		String result = userService.login("Briantest", "testdataa");
+		log.info("Executing unit test to login user Briantest");
 	      assertThat(result).contains("Briantest");
 	      assertThat(result).contains("testdataa");
 	}
@@ -128,7 +133,7 @@ public class UnitTests {
 		@Transactional
 	    public void deleteUser() throws Exception {
 	        userService.deleteUser(48);
-	        
+	        log.info("Executing unit test to delete user with id: ", 48);
 	        User user = new User();
 	       user = userService.getUser(48);
 	        assertNull(user);
@@ -139,6 +144,7 @@ public class UnitTests {
 	public void updateUser() throws Exception {
 		User user = new User(48, "Tesssssstkkkk", "testdataa");
 		User userResult = new User(48, "Tesssssstkkkk", "testdataa");
+		log.info("Executing unit test to update user with id: ", 48);
 		userService.updateUser(user);
 		userResult = userService.getUser(48);
 		assertThat(userResult.toString()).contains("Tesssssstkkkk");

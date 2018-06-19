@@ -3,6 +3,8 @@ package com.ete;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -31,6 +33,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 
 import com.ete.models.User;
 
+
 @SuppressWarnings("unused")
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -43,6 +46,7 @@ public class SpringEndtoEndApplicationTests {
             Charset.forName("utf8"));
 
     private MockMvc mockMvc;
+    private final Logger log = LoggerFactory.getLogger(SpringEndtoEndApplicationTests.class);
 
 
     @SuppressWarnings("rawtypes")
@@ -70,6 +74,7 @@ public class SpringEndtoEndApplicationTests {
 
 	    @Test
 	    public void readUsers() throws Exception {
+	    	log.info("Using mockito to execute integration test to get all users");
 	        mockMvc.perform(get("/users/"))
 	                .andExpect(status().isOk())
 	                .andExpect(content().contentType(contentType));
@@ -78,6 +83,7 @@ public class SpringEndtoEndApplicationTests {
 	    
 	    @Test
 	    public void readSingleUser() throws Exception {
+	    	log.info("Using mockito to execute integration test to get user with id: ", 48);
 	        mockMvc.perform(get("/users/48"))
 	                .andExpect(status().isOk())
 	                .andExpect(content().contentType(contentType));
@@ -86,6 +92,7 @@ public class SpringEndtoEndApplicationTests {
 
 	@Test
 	public void readSingleUserFailure() throws Exception {
+		log.info("Using mockito to execute integration test to get user with id: ", 1);
 		mockMvc.perform(get("/users/1"))
 				.andExpect(status().isNotFound())
 				.andExpect(content().contentType("text/plain;charset=UTF-8"));
@@ -94,6 +101,7 @@ public class SpringEndtoEndApplicationTests {
 	    
 	    @Test
 	    public void readSingleUserByUsername() throws Exception {
+	    	log.info("Using mockito to execute integration test to get user Briantest by username");
 	        mockMvc.perform(get("/users/GetByUsername/Briantest"))
 	                .andExpect(status().isOk())
 	                .andExpect(content().contentType("text/plain;charset=UTF-8"));
@@ -102,6 +110,7 @@ public class SpringEndtoEndApplicationTests {
 	    //Needs to be checked
 	@Test
 	public void readSingleUserByUsernameFailure() throws Exception {
+		log.info("Using mockito to execute integration test to get user Brian1 by username");
 		mockMvc.perform(get("/users/GetByUsername/Brian1"))
 				.andExpect(status().isOk())
 				.andExpect(content().contentType("text/plain;charset=UTF-8"));
@@ -113,7 +122,7 @@ public class SpringEndtoEndApplicationTests {
 	    public void Register() throws Exception {
 	        User user = new User(44, "testingonetwo", "testdatacus");
 	        String bookmarkJson = json(user);
-
+            log.info("Using mockito to execute integration test to register a new user");
 	        this.mockMvc.perform(post("/users/addCustom")
 	                .contentType(contentType)
 	                .content(bookmarkJson))
@@ -125,7 +134,7 @@ public class SpringEndtoEndApplicationTests {
 	public void RegisterAlreadyTaken() throws Exception {
 		User user = new User(44, "Briantest", "testdatacus");
 		String bookmarkJson = json(user);
-
+        log.info("Using mockito to execute integration test to register a new user with a username already taken");
 		this.mockMvc.perform(post("/users/addCustom")
 				.contentType(contentType)
 				.content(bookmarkJson))
@@ -137,7 +146,7 @@ public class SpringEndtoEndApplicationTests {
 	public void RegisterNullFieldsOrTooManyOrTooFewFields() throws Exception {
 		User user = new User(44, "", "testdatacus");
 		String bookmarkJson = json(user);
-
+        log.info("Using mockito to execute integration test to register a user with empty field");
 		this.mockMvc.perform(post("/users/addCustom")
 				.contentType(contentType)
 				.content(bookmarkJson))
@@ -149,7 +158,7 @@ public class SpringEndtoEndApplicationTests {
 	public void RegisterDefaultRepo() throws Exception {
 		User user = new User(44, "testingonetwothree", "testdatacus");
 		String bookmarkJson = json(user);
-
+        log.info("Using mockito to execute integration test register with default crud repo add function");
 		this.mockMvc.perform(post("/users/add")
 				.contentType(contentType)
 				.content(bookmarkJson))
@@ -159,7 +168,7 @@ public class SpringEndtoEndApplicationTests {
 
 	@Test
 	public void Login() throws Exception {
-
+        log.info("Using mockito to execute integration test to test login with user Briantest");
 		this.mockMvc.perform(get("/users/login/?username=Briantest&password=testdataa"))
 
 				.andExpect(status().isOk())
@@ -168,7 +177,7 @@ public class SpringEndtoEndApplicationTests {
 
 	@Test
 	public void LoginCharacter() throws Exception {
-
+		 log.info("Using mockito to execute integration test to test login with empty fields");
 		this.mockMvc.perform(get("/users/login/?username=&password="))
 
 				.andExpect(status().isBadGateway())
@@ -177,7 +186,8 @@ public class SpringEndtoEndApplicationTests {
 
 	@Test
 	public void LoginWrongCredentials() throws Exception {
-
+		
+		 log.info("Using mockito to execute integration test to test login with wrong credentials");
 		this.mockMvc.perform(get("/users/login/?username=Brianffffff&password=testdataa"))
 
 				.andExpect(status().isOk())
@@ -188,6 +198,7 @@ public class SpringEndtoEndApplicationTests {
 	    @Test
 		@Transactional
 	    public void deleteUser() throws Exception {
+	    	log.info("Using mockito to execute integration test to delete user with id, 62");
 	        this.mockMvc.perform(delete("/users/delete/62"))
 	        .andExpect(status().isOk())
             .andExpect(content().contentType("text/plain;charset=UTF-8"));
@@ -198,6 +209,7 @@ public class SpringEndtoEndApplicationTests {
 	public void updateUser() throws Exception {
 		User user = new User(48, "Tesssssstkkkk", "testdataa");
 		String bookmarkJson = json(user);
+		log.info("Using mockito to execute integration test to delete user with id, 48");
 
 		this.mockMvc.perform(put("/users/update")
 				.contentType(contentType)
@@ -210,6 +222,7 @@ public class SpringEndtoEndApplicationTests {
 	public void updateUserNameAlreadyTaken() throws Exception {
 		User user = new User(48, "Briantest", "testdataa");
 		String bookmarkJson = json(user);
+		log.info("Using mockito to execute integration test to delete user with id, 48 using an existing username for another user");
 
 		this.mockMvc.perform(put("/users/update")
 				.contentType(contentType)

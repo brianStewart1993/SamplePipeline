@@ -2,6 +2,8 @@ package com.ete.controllers;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,11 +25,13 @@ public class UserController {
 	
 	@Autowired
 	UserService userService;
+	private final Logger log = LoggerFactory.getLogger(UserController.class);
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(method=RequestMethod.GET, value="/users")
 	public List<User> getAllUsers()
 	{
+		log.info("Getting all users");
 		return userService.getAllUsers();
 	}
 	
@@ -38,12 +42,14 @@ public class UserController {
 		User user = userService.getUser(id);
 		if(userService.getUser(id) != null)
 		{
+			log.info("Getting user with id: ", id);
 			return new ResponseEntity<>(user, HttpStatus.OK);
 			
 		}
 		
 		else
 		{
+			log.error("User not found with id: ", id);
 			return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
 		}
 	}
@@ -52,6 +58,7 @@ public class UserController {
 	@RequestMapping(method=RequestMethod.POST, value="/users/add")
 	public void addUser(@RequestBody User user)
 	{
+		log.info("Adding user");
 		userService.addUser(user);
 	}
 	
@@ -64,11 +71,13 @@ public class UserController {
 		{
 		if(userService.updateUser(user) != null)
 		{
+			log.info("Updating user");
 			message = userService.updateUser(user);
 			return new ResponseEntity<>(message, HttpStatus.OK);
 		}
 		else
 		{
+			log.error("Error updating user");
 			message = "Error updating user!";
 			return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
 			
@@ -76,6 +85,7 @@ public class UserController {
 		}
 		else
 		{
+			log.error("Username already taken");
 			message = "Username already taken!";
 			return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -85,6 +95,7 @@ public class UserController {
 	@RequestMapping(method=RequestMethod.DELETE, value="/users/delete/{id}")
 	public String deleteUser(@PathVariable Integer id)
 	{
+		log.info("Deleting user with id: ", id);
 		 return userService.deleteUser(id);
 	
 	
@@ -100,6 +111,7 @@ public class UserController {
 	String result;
 	if(namelength <= 25 && passwordlength <=25 && namelength >= 8 && passwordlength >= 8)
 	{
+		log.info("User successfully logged in");
 		String message = userService.login(username, password);
 		if(message != "Username or Password Incorrect!")
 		result = "User Login Successful!";
@@ -108,6 +120,7 @@ public class UserController {
 	}
 	else
 	{
+		log.error("Username or Password length should be between 8 to 25 characters!");
 		 result = "Username or Password length should be between 8 to 25 characters!";
 		 return new ResponseEntity<>(result, HttpStatus.BAD_GATEWAY);
 		
@@ -127,6 +140,7 @@ public class UserController {
 		{
 		if(userService.getUserByUsername(user.getUsername())!="[]")
 		{
+			log.error("Username already taken");
 		 message = "Username already taken";
 		 return new ResponseEntity<>(message, HttpStatus.BAD_GATEWAY);
 		}
@@ -134,12 +148,15 @@ public class UserController {
 		{
 			if(nameLength <= 25 && passwordLength <=25 && nameLength >= 8 && passwordLength >= 8)
 			{
+				log.info("User created successfully");
 			message = userService.Register(user.getUsername(), user.getPassword());
 			return new ResponseEntity<>(message, HttpStatus.CREATED);
 			}
 			
 			else 
-				{message = "Username or Password length should be between 8 to 25 characters!";
+				{
+				message = "Username or Password length should be between 8 to 25 characters!";
+				log.error(message);
 				return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
 				}
 			
@@ -148,6 +165,7 @@ public class UserController {
 		else
 		{
 			message = "Username or Password must not be empty or contain spaces";
+			log.error(message);
 			return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
 		}
 	}
@@ -159,12 +177,14 @@ public class UserController {
 	    String user = userService.getUserByUsername(username);
 		if(userService.getUserByUsername(username) != null)
 		{
+			log.info("Got user with username: ", username);
 			return new ResponseEntity<>(user, HttpStatus.OK);
 			
 		}
 		
 		else
 		{
+			log.error("User not found with username: ", username);
 			return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
 		}
 	}
