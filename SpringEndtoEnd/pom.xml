@@ -84,6 +84,13 @@
                 <artifactId>gatling-maven-plugin</artifactId>
                 <version>2.2.4</version>
             </plugin>
+            <plugin>
+    <artifactId>maven-war-plugin</artifactId>
+    <version>3.0.0</version>
+    <configuration>
+        <warName>SpringEndtoEnd</warName>
+    </configuration>
+</plugin>
 		</plugins>
 	</build>
 </project>
