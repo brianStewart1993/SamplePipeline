@@ -2,6 +2,8 @@ package com.ete.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,13 @@ public class UserController {
 		log.info("Getting all users");
 		return userService.getAllUsers();
 	}
+	
+	@GetMapping("/")
+	public String newBook(HttpServletRequest req)
+	{
+		return "Hello welcome to spring end to end application";
+	}
+	
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping("/users/{id}")
