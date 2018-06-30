@@ -1,0 +1,102 @@
+28-06-2018 15:52:40.395 [main] INFO  com.ete.SpringEndtoEndApplication.main - Starting application
+28-06-2018 15:52:41.992 [main] INFO  com.ete.SpringEndtoEndApplication.logStarting - Starting SpringEndtoEndApplication on MININT-TG3EAE0 with PID 7608 (started by Brian Stewart in C:\Users\Brian Stewart\Sample\SamplePipeline\SpringEndtoEnd)
+28-06-2018 15:52:41.993 [main] INFO  com.ete.SpringEndtoEndApplication.logStartupProfileInfo - No active profile set, falling back to default profiles: default
+28-06-2018 15:52:42.063 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext.prepareRefresh - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@52f2a2: startup date [Thu Jun 28 15:52:42 GMT-05:00 2018]; root of context hierarchy
+28-06-2018 15:52:43.246 [background-preinit] INFO  o.h.validator.internal.util.Version.<clinit> - HV000001: Hibernate Validator 5.3.5.Final
+28-06-2018 15:52:45.030 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer.initialize - Tomcat initialized with port(s): 8080 (http)
+28-06-2018 15:52:45.108 [main] INFO  o.a.catalina.core.StandardService.log - Starting service [Tomcat]
+28-06-2018 15:52:45.110 [main] INFO  o.a.catalina.core.StandardEngine.log - Starting Servlet Engine: Apache Tomcat/8.5.20
+28-06-2018 15:52:45.281 [localhost-startStop-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/].log - Initializing Spring embedded WebApplicationContext
+28-06-2018 15:52:45.281 [localhost-startStop-1] INFO  o.s.web.context.ContextLoader.prepareEmbeddedWebApplicationContext - Root WebApplicationContext: initialization completed in 3218 ms
+28-06-2018 15:52:45.399 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean.onStartup - Mapping servlet: 'dispatcherServlet' to [/]
+28-06-2018 15:52:45.402 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean.configure - Mapping filter: 'characterEncodingFilter' to: [/*]
+28-06-2018 15:52:45.402 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean.configure - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+28-06-2018 15:52:45.402 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean.configure - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+28-06-2018 15:52:45.402 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean.configure - Mapping filter: 'requestContextFilter' to: [/*]
+28-06-2018 15:52:46.405 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory - Building JPA container EntityManagerFactory for persistence unit 'default'
+28-06-2018 15:52:46.439 [main] INFO  o.h.jpa.internal.util.LogHelper.logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+28-06-2018 15:52:46.598 [main] INFO  org.hibernate.Version.logVersion - HHH000412: Hibernate Core {5.0.12.Final}
+28-06-2018 15:52:46.599 [main] INFO  org.hibernate.cfg.Environment.<clinit> - HHH000206: hibernate.properties not found
+28-06-2018 15:52:46.601 [main] INFO  org.hibernate.cfg.Environment.buildBytecodeProvider - HHH000021: Bytecode provider name : javassist
+28-06-2018 15:52:46.718 [main] INFO  o.h.annotations.common.Version.<clinit> - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+28-06-2018 15:52:46.969 [main] INFO  org.hibernate.dialect.Dialect.<init> - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+28-06-2018 15:52:47.540 [main] INFO  o.h.tool.hbm2ddl.SchemaUpdate.execute - HHH000228: Running hbm2ddl schema update
+28-06-2018 15:52:47.711 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+28-06-2018 15:52:48.444 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter.initControllerAdviceCache - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@52f2a2: startup date [Thu Jun 28 15:52:42 GMT-05:00 2018]; root of context hierarchy
+28-06-2018 15:52:48.524 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/users/addCustom],methods=[POST]}" onto public org.springframework.http.ResponseEntity<?> com.ete.controllers.UserController.register(com.ete.models.User)
+28-06-2018 15:52:48.526 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/io],methods=[GET]}" onto public java.lang.String com.ete.controllers.UserController.io() throws java.lang.InterruptedException
+28-06-2018 15:52:48.527 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/users],methods=[GET]}" onto public java.util.List<com.ete.models.User> com.ete.controllers.UserController.getAllUsers()
+28-06-2018 15:52:48.527 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/users/update],methods=[PUT]}" onto public org.springframework.http.ResponseEntity<?> com.ete.controllers.UserController.updateUser(com.ete.models.User)
+28-06-2018 15:52:48.527 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/users/delete/{id}],methods=[DELETE]}" onto public java.lang.String com.ete.controllers.UserController.deleteUser(java.lang.Integer)
+28-06-2018 15:52:48.528 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/users/GetByUsername/{username}],methods=[GET]}" onto public org.springframework.http.ResponseEntity<?> com.ete.controllers.UserController.getUsersByUsername(java.lang.String)
+28-06-2018 15:52:48.528 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/users/add],methods=[POST]}" onto public void com.ete.controllers.UserController.addUser(com.ete.models.User)
+28-06-2018 15:52:48.528 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/users/{id}]}" onto public org.springframework.http.ResponseEntity<?> com.ete.controllers.UserController.getUsers(java.lang.Integer)
+28-06-2018 15:52:48.529 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/users/login],methods=[GET]}" onto public org.springframework.http.ResponseEntity<?> com.ete.controllers.UserController.Login(java.lang.String,java.lang.String)
+28-06-2018 15:52:48.531 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+28-06-2018 15:52:48.531 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+28-06-2018 15:52:48.566 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping.registerHandler - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+28-06-2018 15:52:48.566 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping.registerHandler - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+28-06-2018 15:52:48.612 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping.registerHandler - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+28-06-2018 15:52:48.894 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter.afterSingletonsInstantiated - Registering beans for JMX exposure on startup
+28-06-2018 15:52:48.943 [main] INFO  o.a.coyote.http11.Http11NioProtocol.log - Initializing ProtocolHandler ["http-nio-8080"]
+28-06-2018 15:52:48.991 [main] INFO  o.a.coyote.http11.Http11NioProtocol.log - Starting ProtocolHandler ["http-nio-8080"]
+28-06-2018 15:52:49.056 [main] INFO  o.a.tomcat.util.net.NioSelectorPool.log - Using a shared selector for servlet write/read
+28-06-2018 15:52:49.076 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer.start - Tomcat started on port(s): 8080 (http)
+28-06-2018 15:52:49.097 [main] INFO  com.ete.SpringEndtoEndApplication.logStarted - Started SpringEndtoEndApplication in 8.036 seconds (JVM running for 9.866)
+28-06-2018 15:56:51.908 [http-nio-8080-exec-160] INFO  o.a.c.c.C.[Tomcat].[localhost].[/].log - Initializing Spring FrameworkServlet 'dispatcherServlet'
+28-06-2018 15:56:51.910 [http-nio-8080-exec-160] INFO  o.s.web.servlet.DispatcherServlet.initServletBean - FrameworkServlet 'dispatcherServlet': initialization started
+28-06-2018 15:56:51.967 [http-nio-8080-exec-160] INFO  o.s.web.servlet.DispatcherServlet.initServletBean - FrameworkServlet 'dispatcherServlet': initialization completed in 56 ms
+28-06-2018 16:41:55.052 [main] INFO  com.ete.SpringEndtoEndApplication.main - Starting application
+28-06-2018 16:41:55.785 [main] INFO  com.ete.SpringEndtoEndApplication.logStarting - Starting SpringEndtoEndApplication on MININT-TG3EAE0 with PID 5928 (started by Brian Stewart in C:\Users\Brian Stewart\Sample\SamplePipeline\SpringEndtoEnd)
+28-06-2018 16:41:55.785 [main] INFO  com.ete.SpringEndtoEndApplication.logStartupProfileInfo - No active profile set, falling back to default profiles: default
+28-06-2018 16:41:55.834 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext.prepareRefresh - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1dc3715: startup date [Thu Jun 28 16:41:55 GMT-05:00 2018]; root of context hierarchy
+28-06-2018 16:41:56.388 [background-preinit] INFO  o.h.validator.internal.util.Version.<clinit> - HV000001: Hibernate Validator 5.3.5.Final
+28-06-2018 16:42:00.728 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer.initialize - Tomcat initialized with port(s): 8080 (http)
+28-06-2018 16:42:00.752 [main] INFO  o.a.catalina.core.StandardService.log - Starting service [Tomcat]
+28-06-2018 16:42:00.753 [main] INFO  o.a.catalina.core.StandardEngine.log - Starting Servlet Engine: Apache Tomcat/8.5.20
+28-06-2018 16:42:01.279 [localhost-startStop-1] INFO  org.apache.jasper.servlet.TldScanner.log - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-06-2018 16:42:01.284 [localhost-startStop-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/].log - Initializing Spring embedded WebApplicationContext
+28-06-2018 16:42:01.284 [localhost-startStop-1] INFO  o.s.web.context.ContextLoader.prepareEmbeddedWebApplicationContext - Root WebApplicationContext: initialization completed in 5450 ms
+28-06-2018 16:42:01.402 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean.onStartup - Mapping servlet: 'dispatcherServlet' to [/]
+28-06-2018 16:42:01.408 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean.configure - Mapping filter: 'characterEncodingFilter' to: [/*]
+28-06-2018 16:42:01.409 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean.configure - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+28-06-2018 16:42:01.409 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean.configure - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+28-06-2018 16:42:01.409 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean.configure - Mapping filter: 'requestContextFilter' to: [/*]
+28-06-2018 16:42:02.328 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory - Building JPA container EntityManagerFactory for persistence unit 'default'
+28-06-2018 16:42:02.439 [main] INFO  o.h.jpa.internal.util.LogHelper.logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+28-06-2018 16:42:03.672 [main] INFO  org.hibernate.Version.logVersion - HHH000412: Hibernate Core {5.0.12.Final}
+28-06-2018 16:42:03.674 [main] INFO  org.hibernate.cfg.Environment.<clinit> - HHH000206: hibernate.properties not found
+28-06-2018 16:42:03.685 [main] INFO  org.hibernate.cfg.Environment.buildBytecodeProvider - HHH000021: Bytecode provider name : javassist
+28-06-2018 16:42:03.831 [main] INFO  o.h.annotations.common.Version.<clinit> - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+28-06-2018 16:42:05.293 [main] INFO  org.hibernate.dialect.Dialect.<init> - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+28-06-2018 16:42:08.386 [main] INFO  o.h.tool.hbm2ddl.SchemaUpdate.execute - HHH000228: Running hbm2ddl schema update
+28-06-2018 16:42:08.486 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+28-06-2018 16:42:09.523 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter.initControllerAdviceCache - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1dc3715: startup date [Thu Jun 28 16:41:55 GMT-05:00 2018]; root of context hierarchy
+28-06-2018 16:42:09.633 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/users/addCustom],methods=[POST]}" onto public org.springframework.http.ResponseEntity<?> com.ete.controllers.UserController.register(com.ete.models.User)
+28-06-2018 16:42:09.636 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/users],methods=[GET]}" onto public java.util.List<com.ete.models.User> com.ete.controllers.UserController.getAllUsers()
+28-06-2018 16:42:09.636 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/users/update],methods=[PUT]}" onto public org.springframework.http.ResponseEntity<?> com.ete.controllers.UserController.updateUser(com.ete.models.User)
+28-06-2018 16:42:09.637 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/users/delete/{id}],methods=[DELETE]}" onto public java.lang.String com.ete.controllers.UserController.deleteUser(java.lang.Integer)
+28-06-2018 16:42:09.637 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/users/GetByUsername/{username}],methods=[GET]}" onto public org.springframework.http.ResponseEntity<?> com.ete.controllers.UserController.getUsersByUsername(java.lang.String)
+28-06-2018 16:42:09.637 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/users/add],methods=[POST]}" onto public void com.ete.controllers.UserController.addUser(com.ete.models.User)
+28-06-2018 16:42:09.638 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/],methods=[GET]}" onto public java.lang.String com.ete.controllers.UserController.newBook(javax.servlet.http.HttpServletRequest)
+28-06-2018 16:42:09.638 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/users/{id}]}" onto public org.springframework.http.ResponseEntity<?> com.ete.controllers.UserController.getUsers(java.lang.Integer)
+28-06-2018 16:42:09.638 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/users/login],methods=[GET]}" onto public org.springframework.http.ResponseEntity<?> com.ete.controllers.UserController.Login(java.lang.String,java.lang.String)
+28-06-2018 16:42:09.639 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/io],methods=[GET]}" onto public java.lang.String com.ete.controllers.UserController.io() throws java.lang.InterruptedException
+28-06-2018 16:42:09.640 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+28-06-2018 16:42:09.641 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping.register - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+28-06-2018 16:42:09.671 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping.registerHandler - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+28-06-2018 16:42:09.672 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping.registerHandler - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+28-06-2018 16:42:09.715 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping.registerHandler - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+28-06-2018 16:42:09.954 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter.afterSingletonsInstantiated - Registering beans for JMX exposure on startup
+28-06-2018 16:42:10.016 [main] INFO  o.a.coyote.http11.Http11NioProtocol.log - Initializing ProtocolHandler ["http-nio-8080"]
+28-06-2018 16:42:10.104 [main] INFO  o.a.coyote.http11.Http11NioProtocol.log - Starting ProtocolHandler ["http-nio-8080"]
+28-06-2018 16:42:10.410 [main] INFO  o.a.tomcat.util.net.NioSelectorPool.log - Using a shared selector for servlet write/read
+28-06-2018 16:42:10.540 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer.start - Tomcat started on port(s): 8080 (http)
+28-06-2018 16:42:10.547 [main] INFO  com.ete.SpringEndtoEndApplication.logStarted - Started SpringEndtoEndApplication in 15.285 seconds (JVM running for 16.259)
+28-06-2018 16:42:10.615 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/].log - Initializing Spring FrameworkServlet 'dispatcherServlet'
+28-06-2018 16:42:10.616 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet.initServletBean - FrameworkServlet 'dispatcherServlet': initialization started
+28-06-2018 16:42:10.632 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet.initServletBean - FrameworkServlet 'dispatcherServlet': initialization completed in 16 ms
