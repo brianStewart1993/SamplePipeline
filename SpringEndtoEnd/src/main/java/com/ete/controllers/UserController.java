@@ -38,12 +38,12 @@ public class UserController {
 		return userService.getAllUsers();
 	}
 	
-//	@GetMapping("/")
-//	public String newBook(HttpServletRequest req)
-//	{
-//		return "Hello welcome to spring end to end application";
-//	}
-//	
+/*	@GetMapping("/")
+	public String IndexPage()
+	{
+		return "index";
+	}
+	*/
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping("/users/{id}")
