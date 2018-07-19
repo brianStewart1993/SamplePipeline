@@ -199,7 +199,7 @@ public class SpringEndtoEndApplicationTests {
 		@Transactional
 	    public void deleteUser() throws Exception {
 	    	log.info("Using mockito to execute integration test to delete user with id, 62");
-	        this.mockMvc.perform(delete("/users/delete/62"))
+	        this.mockMvc.perform(delete("/users/delete/61"))
 	        .andExpect(status().isOk())
             .andExpect(content().contentType("text/plain;charset=UTF-8"));
 	    }
