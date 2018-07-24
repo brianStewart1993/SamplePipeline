@@ -21,7 +21,7 @@ import com.ete.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api(value = "customers", description = "RESTful API to interact with customer resources.")
+@Api(value = "customers", description = "RESTful API to interact with user resources.")
 @RestController
 public class UserController {
 	
