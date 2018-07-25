@@ -20,6 +20,8 @@ import com.ete.models.User;
 import com.ete.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @Api(value = "customers", description = "RESTful API to interact with user resources.")
 @RestController
@@ -30,6 +32,9 @@ public class UserController {
 	private final Logger log = LoggerFactory.getLogger(UserController.class);
 	
     @ApiOperation(value = "Get users", notes = "Get all users.", responseContainer = "List", response = User.class)
+    @ApiResponses(value = {
+	        @ApiResponse(code = 500, message = "Server error"),
+	        @ApiResponse(code = 200, message = "Successful retrieval") })
 	@CrossOrigin(origins = "*")
 	@RequestMapping(method=RequestMethod.GET, value="/users")
 	public List<User> getAllUsers()
@@ -45,6 +50,9 @@ public class UserController {
 	}
 	*/
     @ApiOperation(value = "Get single user", notes = "Get single user by id.", responseContainer = "List", response = User.class)
+    @ApiResponses(value = {
+	        @ApiResponse(code = 404, message = "Not found"),
+	        @ApiResponse(code = 200, message = "Successful retrieval") })
 	@CrossOrigin(origins = "*")
 	@RequestMapping(method = RequestMethod.GET, value = "/users/{id}")
 	public ResponseEntity<?> getUsers(@PathVariable Integer id)
@@ -64,7 +72,7 @@ public class UserController {
 		}
 	}
 	
-    @ApiOperation(value = "Add user default repo method", notes = "Add user.", responseContainer = "List", response = User.class)
+    @ApiOperation(value = "Add user default repo method", notes = "Add user.")
 	@CrossOrigin(origins = "*")
 	@RequestMapping(method=RequestMethod.POST, value="/users/add")
 	public void addUser(@RequestBody User user)
@@ -73,7 +81,11 @@ public class UserController {
 		userService.addUser(user);
 	}
 	
-    @ApiOperation(value = "Update user", notes = "Updates a user using default repo method.", responseContainer = "List", response = User.class)
+    @ApiOperation(value = "Update user", notes = "Updates a user using default repo method.", responseContainer = "List", response = String.class)
+    @ApiResponses(value = {
+	        @ApiResponse(code = 500, message = "Server error"),
+	        @ApiResponse(code = 200, message = "Successful retrieval"),
+	        @ApiResponse(code = 400, message = "Bad Request")})
 	@CrossOrigin(origins = "*")
 	@RequestMapping(method=RequestMethod.PUT, value="/users/update")
 	public ResponseEntity<?> updateUser(@RequestBody User user)
@@ -103,7 +115,10 @@ public class UserController {
 		}
 	}
 	
-    @ApiOperation(value = "Delete user", notes = "Deletes a user based on Id.", responseContainer = "List", response = User.class)
+    @ApiOperation(value = "Delete user", notes = "Deletes a user based on Id.", responseContainer = "List", response = String.class)
+    @ApiResponses(value = {
+	        @ApiResponse(code = 500, message = "Server error"),
+	        @ApiResponse(code = 200, message = "Successful Deletion")})
 	@CrossOrigin(origins = "*")
 	@RequestMapping(method=RequestMethod.DELETE, value="/users/delete/{id}")
 	public String deleteUser(@PathVariable Integer id)
@@ -114,7 +129,10 @@ public class UserController {
 	
 	}
 	
-	@ApiOperation(value = "User authentication", notes = "Authenticates a user.", responseContainer = "List", response = User.class)
+	@ApiOperation(value = "User authentication", notes = "Authenticates a user.", responseContainer = "List", response = String.class)
+	 @ApiResponses(value = {
+		        @ApiResponse(code = 503, message = "Bad Gateway"),
+		        @ApiResponse(code = 200, message = "Successful Login")})
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/users/login", method = RequestMethod.GET)
 	@ResponseBody
@@ -141,7 +159,11 @@ public class UserController {
 	}
 	}
 	
-    @ApiOperation(value = "Add user default custom method", notes = "Add user.", responseContainer = "List", response = User.class)
+    @ApiOperation(value = "Add user default custom method", notes = "Add user.", responseContainer = "List", response = String.class)
+    @ApiResponses(value = {
+	        @ApiResponse(code = 201, message = "Successfully Registered"),
+	        @ApiResponse(code = 503, message = "Bad Gateway"),
+	        @ApiResponse(code = 400, message = "Bad Request")})
 	@CrossOrigin(origins = "*")
 	@RequestMapping(method=RequestMethod.POST, value="/users/addCustom")
 	public ResponseEntity<?>  register(@RequestBody User user)
@@ -186,6 +208,9 @@ public class UserController {
 	}
     
     @ApiOperation(value = "Get user by username", notes = "Gets a user by username.", responseContainer = "List", response = User.class)
+    @ApiResponses(value = {
+	        @ApiResponse(code = 404, message = "Not Found"),
+	        @ApiResponse(code = 200, message = "Successful Retrieval")})
 	@CrossOrigin(origins = "*")
 	@RequestMapping(method=RequestMethod.GET, value = "/users/GetByUsername/{username}")
 	public ResponseEntity<?> getUsersByUsername(@PathVariable String username)
@@ -205,7 +230,7 @@ public class UserController {
 		}
 	}
 	
-    @ApiOperation(value = "Performance Testing IO", notes = "Performance testing endpoint.", responseContainer = "List", response = User.class)
+    @ApiOperation(value = "Performance Testing IO", notes = "Performance testing endpoint.")
 	@GetMapping("/io")
     public String io() throws InterruptedException {
         long sleepDuration = 200L + (long) (500L * Math.random());
