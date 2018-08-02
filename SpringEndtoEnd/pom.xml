@@ -111,6 +111,7 @@
 
 	<build>
 	<finalName>SpringEndtoEnd</finalName>
+	<pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -137,6 +138,26 @@
         <artifactId>sonar-maven-plugin</artifactId>
         <version>3.4.0.905</version>
       </plugin>
+               <plugin>
+                    <groupId>com.lazerycode.jmeter</groupId>
+                    <artifactId>jmeter-maven-plugin</artifactId>
+                    <version>2.7.0</version>
+                    <executions>
+                        <execution>
+                            <id>jmeter-tests</id>
+                            <goals>
+                                <goal>jmeter</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>jmeter-check-results</id>
+                            <goals>
+                                <goal>results</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
 		</plugins>
+		</pluginManagement>
 	</build>
 </project>
