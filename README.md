@@ -1,2 +1,0 @@
-# SamplePipeline
-Ci Pipeline mathew
